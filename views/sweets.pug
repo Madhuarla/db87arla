@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{origin:"Delhi", price: 20.0, quantity: 500.0},{origin:"Bengaluru", price: 30.0, quantity: 700.0},{origin:"Mumbai", price: 40.0, quantity: 9000.0}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each element,l in results
+        div(class="col-sm-4 bg-info m-1 p-3" onclick=`buy(${l})`) #{element.origin} - #{element.price} - #{element.quantity}
+  script.
+     
+      function buy(p)
+      {
+        alert(`You purchased Item ${p+1}`)
+      }
