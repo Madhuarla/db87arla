@@ -32,8 +32,8 @@ async function recreateDB(){
     console.log("Third object saved")
   });
   }
-  let reseed = true;
-  if (reseed) { recreateDB();}
+  //let reseed = true;
+  //if (reseed) { recreateDB();}
 
 const connectionString = process.env.MONGO_CON
 mongoose = require('mongoose');
@@ -62,7 +62,7 @@ app.use('/resource', resourceRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-});
+}); 
 
 // error handler
 app.use(function(err, req, res, next) {
