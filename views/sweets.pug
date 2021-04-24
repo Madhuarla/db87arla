@@ -2,14 +2,23 @@ extends layout
 
 block content
   h1= title
-  - var sweets = results
+  - let create = `dispatch(\"sweets/create\")`
+  button.btn(class="btn-danger m1-1", onclick=create) Create
+  - let sweets=results;
   div(class="container-fluid mt-3")
-  div(class="row")
-    each element,l in results
-        div(class="col-sm-4 bg-info m-1 p-3" onclick=`buy(${l})`) #{element.origin} - #{element.price} - #{element.quantity}
-  script.
-     
-      function buy(p)
-      {
-        alert(`You purchased Item ${p+1}`)
+   div(class="row m-1")
+    each s in sweets
+     - let destination=`buy(\"/sweets/update?id=${s._id}\")`
+     - let detail=`buy(\"/sweets/detail?id=${s._id}\")`
+     - let del=`buy(\"/sweets/delete?id=${s._id}\")`
+     div(class="col-sm-6 bg-info m-1 p-3") sweets #{s.origin} - #{s.quantity} - #{s.price}
+      button.btn( class="btn-success ml-2", onclick=destination ) Update
+      button.btn( class="btn-dark ml-2", onclick=detail ) Detail
+      button.btn( class="btn-success ml-2", onclick=del ) Delete
+
+   script.
+    function buy(path){
+        window.location.href=path
+
       }
+  

@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='sweetsForm', action="/resource/sweets", method="POST")
+    div.form-group
+        label.sweetsAttr(for='origin') sweets origin
+        input#origin(type='text', name='sweetsorigin')
+    div.form-group
+        label.sweetsAttr(for='quantity') sweets quantity 
+        input#quantity(type='text', name='quantity')
+    div.form-group
+        label.sweetsAttr(for='price') sweets price
+        input#price(type='number', name='price')
+    input(type="submit")
+
+  script.
+    document.forms['sweetsForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });

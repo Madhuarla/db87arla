@@ -1,19 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p madhu babu arla #{title} js
-  button(type="button", class="btn btn-danger", onclick="update()") Press Me 
 
-  p 
-  div(id="target") Display
-  
-  script.
-    var client_count=0;
-    function update(){
-      client_count+=1;
-      
-      document.getElementById("target").innerHTML="Value Now "+client_count  ;
-    }
-
-  a(href="sweets") sweets page
+ if (!user)
+  a(href="/login") Login
+  br
+  a(href="/register") Register
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/sweets") Go to the sweets Page
+  br
+  a(href="/logout") Logout

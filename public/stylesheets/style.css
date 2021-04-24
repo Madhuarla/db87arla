@@ -12,3 +12,17 @@ a {
   width: 120px;
 }
 
+.sweetsAttr {
+  border: 1px solid rgb(78, 30, 167);
+  background-color: sweetsmarine;
+  width: 300px;
+  float: left;
+  padding-left: 10px;
+}
+.def {
+  float: right;
+}
+h1 {
+  background-color: rgb(28, 107, 160);
+  color: rgb(156, 196, 45);
+}

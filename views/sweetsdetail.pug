@@ -3,8 +3,12 @@ extends layout
 block content
   h1= title
 
+  if (toShow == null)
+    h2 No instance to delete
+  else
+
   - let sweetsid = toShow._id
-  - let sweetsorigin = toShow.sweetsorigin
+  - let sweetsorigin = toShow.origin
   - let sweetsquantity = toShow.quantity
   - let sweetsprice = toShow.price
   div
